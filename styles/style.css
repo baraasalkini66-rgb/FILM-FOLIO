@@ -1,0 +1,9 @@
+body {
+    background-color: lightgray;
+}
+.credits {
+    display: none;
+}
+.credits--visible {
+    display: block;
+}
