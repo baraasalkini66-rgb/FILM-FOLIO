@@ -1,8 +1,24 @@
 import FilmCard from "./components/FilmCard.jsx"
 import CreditsPanel from "./components/CreditsPanel.jsx"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+const selectedCreditsKey = "film-folio-selected-credits"
+function getInitialSelectedCredits() {
+  const savedCredits = localStorage.getItem(selectedCreditsKey)
+
+  if (savedCredits) {
+    return JSON.parse(savedCredits)
+  }
+
+  return null
+}
 function App() {
-  const [selectedCredits, setSelectedCredits] = useState(null)
+  const [selectedCredits, setSelectedCredits] = useState(getInitialSelectedCredits)
+  useEffect(() => {
+  localStorage.setItem(
+    selectedCreditsKey,
+    JSON.stringify(selectedCredits)
+  )
+}, [selectedCredits])
   return (
     <main>
       <h1>Film Folio</h1>
