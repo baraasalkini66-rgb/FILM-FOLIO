@@ -5,6 +5,11 @@ function FilmCard(props) {
       <p>{props.description}</p>
       <p>Runtime: {props.runtime}</p>
       <p>Country: {props.country}</p>
+      {props.onShowCredits && (
+  <button onClick={() => props.onShowCredits(props.credits)}>
+    Show credits
+  </button>
+)}
     </article>
   )
 }

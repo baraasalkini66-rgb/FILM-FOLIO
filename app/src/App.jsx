@@ -1,6 +1,8 @@
 import FilmCard from "./components/FilmCard.jsx"
-
+import CreditsPanel from "./components/CreditsPanel.jsx"
+import { useState } from "react"
 function App() {
+  const [selectedCredits, setSelectedCredits] = useState(null)
   return (
     <main>
       <h1>Film Folio</h1>
@@ -11,6 +13,8 @@ function App() {
           description="A mapmaker records disappearing paths across a changing landscape."
           runtime="12 minutes"
           country="United Kingdom"
+ credits="Director: Maya Reed · Cinematography: Elias Hart"      
+onShowCredits={setSelectedCredits}
         />
 
         <FilmCard
@@ -18,6 +22,8 @@ function App() {
           description="Two strangers meet during a storm that seems to follow them."
           runtime="15 minutes"
           country="Ireland"
+          credits="Director: Nora Blake · Cinematography: Theo Grant"
+onShowCredits={setSelectedCredits}
         />
 
         <FilmCard
@@ -25,8 +31,13 @@ function App() {
           description="A technician discovers unexpected memories inside an old machine."
           runtime="10 minutes"
           country="France"
+          credits="Director: Lena Moreau · Cinematography: Victor Chen"
+onShowCredits={setSelectedCredits}
         />
       </section>
+    {selectedCredits && (
+  <CreditsPanel credits={selectedCredits} />
+)}
     </main>
   )
 }
